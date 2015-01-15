@@ -1,4 +1,4 @@
-with open("newsample.txt") as file:
+with open("sample.txt") as file:
     all_lines = file.readlines()
 
 #print(all_lines)
@@ -16,12 +16,16 @@ def clean(text):
     return text
 
 cleanstring = clean(rawstring).lower()
-cleanlist = cleanstring.split()
 
 #print(cleanstring)
-#print(cleanlist)
 
-def word_count(a_list):
+
+def word_frequency(a_string):
+    """a function that takes a string and creates a dictionary
+    where the keys are the independent words in the string and
+    their values are the number of times that word appears in
+    the string"""
+    a_list = a_string.split()
     a_dict = {}
     for item in a_list:
         if item in a_dict:
@@ -30,7 +34,7 @@ def word_count(a_list):
             a_dict[item] = 1
     return a_dict
 
-book_dict = word_count(cleanlist)
+book_dict = word_frequency(cleanstring)
 
 #print(book_dict)
 
@@ -44,4 +48,11 @@ winners = top_20(book_dict)
 
 #print(winners)
 
-print("{}  {}".format((winners[0])[0], (winners[0])[1]))
+def basic_print(lista):
+    """a function that prints the first two values of a list of tuples
+    with each tuple on its own line, and the two values separated by
+    two spaces"""
+    for item in lista:
+        print("{}  {}".format(item[0], item[1]))
+
+basic_print(winners)
