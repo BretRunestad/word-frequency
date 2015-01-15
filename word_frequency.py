@@ -55,4 +55,14 @@ def basic_print(lista):
     for item in lista:
         print("{}  {}".format(item[0], item[1]))
 
-basic_print(winners)
+def histogram_print(lista):
+    def slashout(value):
+        intvalue = value//40
+        slashes = "#" * intvalue
+        return slashes
+
+    for item in lista:
+        print("{} {}".format(item[0], slashout(item[1])))
+
+
+histogram_print(winners)
