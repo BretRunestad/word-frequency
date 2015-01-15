@@ -56,13 +56,20 @@ def basic_print(lista):
         print("{}  {}".format(item[0], item[1]))
 
 def histogram_print(lista):
+    """a function that prints out the results in histogram form,
+    with the highest value being 50 #'s long'"""
+    divisor = ((lista[0])[1])//50
     def slashout(value):
-        intvalue = value//40
+        """a function that converts a number into the appropriate
+        number of slashes"""
+        intvalue = value//divisor
         slashes = "#" * intvalue
         return slashes
 
     for item in lista:
-        print("{} {}".format(item[0], slashout(item[1])))
+        #print(item[0])
+        #print(slashout(item[1]))
+        print("{} {}".format(item[0].rjust(10), slashout(item[1])))
 
-
+basic_print(winners)
 histogram_print(winners)
