@@ -7,15 +7,14 @@ rawstring = ' '.join(all_lines)
 
 #print(rawstring)
 
-def clean(text):
-    """A function to clean text of various punctuations, and to replace hyphens with spaces"""
-    for char in """.$#,:"'?!)(""":
-        text = text.replace(char, "")
-    for char in """-""":
-        text = text.replace(char, " ")
-    return text
+#def clean(text):
+#    """A function to clean text of various punctuations, and to replace hyphens with spaces"""
+#    for char in """.$#,:"'?!)(""":
+#    for char in """-""":
+#        text = text.replace(char, " ")
+#    return text
 
-cleanstring = clean(rawstring).lower()
+#cleanstring = clean(rawstring).lower()
 
 #print(cleanstring)
 
@@ -25,7 +24,14 @@ def word_frequency(a_string):
     where the keys are the independent words in the string and
     their values are the number of times that word appears in
     the string"""
-    a_list = a_string.split()
+
+    for char in """.$#,:"'?!)(""":
+        a_string = a_string.replace(char, "")
+    for char in """-""":
+        a_string = a_string.replace(char, " ")
+
+    cleanstring = a_string.lower()
+    a_list = cleanstring.split()
     a_dict = {}
     for item in a_list:
         if item in a_dict:
@@ -34,7 +40,7 @@ def word_frequency(a_string):
             a_dict[item] = 1
     return a_dict
 
-book_dict = word_frequency(cleanstring)
+book_dict = word_frequency(rawstring)
 
 #print(book_dict)
 
@@ -53,7 +59,7 @@ def basic_print(lista):
     with each tuple on its own line, and the two values separated by
     two spaces"""
     for item in lista:
-        print("{}  {}".format(item[0], item[1]))
+        print("{} \t\t {}".format(item[0], item[1]))
 
 def histogram_print(lista):
     """a function that prints out the results in histogram form,
@@ -69,7 +75,7 @@ def histogram_print(lista):
     for item in lista:
         #print(item[0])
         #print(slashout(item[1]))
-        print("{} {}".format(item[0].rjust(10), slashout(item[1])))
+        print("{} \t\t {}".format(item[0], slashout(item[1])))
 
 basic_print(winners)
 histogram_print(winners)
