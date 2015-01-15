@@ -7,18 +7,6 @@ rawstring = ' '.join(all_lines)
 
 #print(rawstring)
 
-#def clean(text):
-#    """A function to clean text of various punctuations, and to replace hyphens with spaces"""
-#    for char in """.$#,:"'?!)(""":
-#    for char in """-""":
-#        text = text.replace(char, " ")
-#    return text
-
-#cleanstring = clean(rawstring).lower()
-
-#print(cleanstring)
-
-
 def word_frequency(a_string):
     """a function that takes a string and creates a dictionary
     where the keys are the independent words in the string and
@@ -48,7 +36,7 @@ def top_20(a_dict):
     """a function that takes a dictionary with words for keys and the number of times those words appear
     in the text as values.  This function returns a list of dictionaries of the 20 most-used words"""
     sorted_list = sorted(a_dict.items(), key=lambda x: x[1], reverse=True)
-    return sorted_list[1:21]
+    return sorted_list[0:20]
 
 winners = top_20(book_dict)
 
@@ -73,8 +61,6 @@ def histogram_print(lista):
         return slashes
 
     for item in lista:
-        #print(item[0])
-        #print(slashout(item[1]))
         print("{} \t\t {}".format(item[0], slashout(item[1])))
 
 basic_print(winners)
